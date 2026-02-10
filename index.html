@@ -2,7 +2,10 @@
 <html lang="vi">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
     <title>Gửi Dương Ngọc Yến - 11/02</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@500;700&display=swap"
@@ -15,12 +18,7 @@
         --secondary: #fad0c4;
         --accent: #a18cd1;
         --text: #2d3436;
-        --bright-gradient: linear-gradient(
-          to right,
-          #ff5f6d,
-          #ffc371,
-          #a18cd1
-        ); /* Màu mới rực rỡ */
+        --bright-gradient: linear-gradient(to right, #ff5f6d, #ffc371, #a18cd1);
       }
 
       * {
@@ -30,13 +28,15 @@
       }
 
       body {
+        margin: 0;
+        padding: 0;
         font-family: "Quicksand", sans-serif;
         background: linear-gradient(135deg, #fff1eb 0%, #ace0f9 100%);
         min-height: 100vh;
-        overflow: hidden;
+        overflow: hidden; /* Khóa cuộn toàn trang để tránh lỗi trên mobile */
       }
 
-      /* --- MÀN HÌNH CHỜ (Overlay) --- */
+      /* --- MÀN HÌNH CHỜ --- */
       #overlay {
         position: fixed;
         top: 0;
@@ -45,7 +45,7 @@
         height: 100%;
         background: radial-gradient(
           circle,
-          rgba(255, 255, 255, 0.9) 0%,
+          rgba(255, 255, 255, 0.95) 0%,
           rgba(255, 230, 230, 1) 100%
         );
         z-index: 9999;
@@ -54,11 +54,13 @@
         justify-content: center;
         align-items: center;
         transition: opacity 1s ease;
+        padding: 20px;
+        text-align: center;
       }
 
       .pulse-btn {
-        padding: 20px 50px;
-        font-size: 1.5rem;
+        padding: 15px 40px;
+        font-size: 1.2rem;
         background: linear-gradient(45deg, var(--primary), var(--accent));
         color: white;
         border: none;
@@ -67,6 +69,7 @@
         box-shadow: 0 10px 30px rgba(255, 100, 100, 0.4);
         animation: pulse 2s infinite;
         font-family: "Dancing Script", cursive;
+        margin-top: 20px;
       }
 
       @keyframes pulse {
@@ -76,7 +79,7 @@
         }
         70% {
           transform: scale(1.05);
-          box-shadow: 0 0 0 20px rgba(255, 154, 158, 0);
+          box-shadow: 0 0 0 15px rgba(255, 154, 158, 0);
         }
         100% {
           transform: scale(1);
@@ -88,99 +91,87 @@
       #main-content {
         display: none;
         opacity: 0;
-        padding: 40px 20px;
+        padding: 20px 15px; /* Giảm padding trên mobile */
         max-width: 900px;
         margin: 0 auto;
         text-align: center;
         transition: opacity 1.5s ease;
         height: 100vh;
         overflow-y: auto;
+        /* Ẩn thanh cuộn */
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+      #main-content::-webkit-scrollbar {
+        display: none;
       }
 
       h1.title {
         font-family: "Dancing Script", cursive;
         font-size: 3.5rem;
-        background: var(--bright-gradient); /* Dùng màu rực rỡ cho tiêu đề */
+        background: var(--bright-gradient);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        margin-bottom: 20px;
-        animation: floatText 3s ease-in-out infinite;
+        margin-bottom: 10px;
+        line-height: 1.2;
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
       }
 
-      @keyframes floatText {
-        0%,
-        100% {
-          transform: translateY(0);
-        }
-        50% {
-          transform: translateY(-10px);
-        }
+      .subtitle {
+        color: #666;
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 20px;
       }
 
+      /* --- GALERY ẢNH --- */
       .gallery {
         display: flex;
         justify-content: center;
-        gap: 30px;
-        margin: 40px 0;
+        gap: 20px;
+        margin: 30px 0;
         flex-wrap: wrap;
       }
       .photo-card {
-        width: 220px;
-        height: 300px;
+        width: 200px;
+        height: 280px; /* Kích thước mặc định PC */
         background: white;
-        padding: 10px;
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-        transform: rotate(-5deg);
+        padding: 8px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        transform: rotate(-3deg);
         transition: transform 0.5s;
-        border-radius: 4px;
+        border-radius: 8px;
       }
       .photo-card:nth-child(2) {
-        transform: rotate(5deg);
-      }
-      .photo-card:hover {
-        transform: rotate(0) scale(1.1);
-        z-index: 10;
+        transform: rotate(3deg);
       }
       .photo-card img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        border-radius: 2px;
+        border-radius: 4px;
       }
 
-      /* Khung lời chúc */
+      /* --- KHUNG LỜI CHÚC --- */
       .letter-box {
-        background: rgba(
-          255,
-          255,
-          255,
-          0.85
-        ); /* Nền trắng đục hơn một chút để làm nổi chữ */
+        background: rgba(255, 255, 255, 0.85);
         backdrop-filter: blur(10px);
-        padding: 40px;
+        padding: 30px;
         border-radius: 20px;
-        box-shadow: 0 15px 40px rgba(255, 154, 158, 0.15);
+        box-shadow: 0 10px 30px rgba(255, 154, 158, 0.15);
         text-align: left;
-        margin-bottom: 50px;
+        margin-bottom: 80px; /* Để chừa chỗ trống dưới cùng cho dễ vuốt */
         border: 2px solid white;
-        position: relative;
       }
 
-      /* === CẬP NHẬT CSS CHO PHẦN CHỮ RỰC RỠ HƠN === */
       #wish-text {
-        font-size: 1.25rem; /* Chữ to hơn một chút */
-        line-height: 1.9;
+        font-size: 1.2rem;
+        line-height: 1.8;
         white-space: pre-line;
-        font-weight: 600; /* Chữ đậm hơn để rõ màu */
-
-        /* Tạo hiệu ứng màu gradient cho chữ */
-        background: linear-gradient(to right, #ff5f6d, #a18cd1, #ff7eb3);
+        font-weight: 600;
+        background: linear-gradient(to right, #ff5f6d, #a18cd1);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-
-        /* Thêm bóng nhẹ để dễ đọc trên nền sáng */
-        filter: drop-shadow(1px 1px 1px rgba(255, 255, 255, 0.5));
       }
 
       .cursor {
@@ -189,7 +180,7 @@
         height: 1.2em;
         background: var(--accent);
         animation: blink 1s infinite;
-        vertical-align: text-bottom;
+        vertical-align: sub;
       }
       @keyframes blink {
         50% {
@@ -206,28 +197,49 @@
         pointer-events: none;
         z-index: -1;
       }
+
       footer {
-        margin-top: 30px;
-        font-size: 0.9rem;
-        color: #888;
+        margin-top: 20px;
+        font-size: 0.8rem;
+        color: #999;
         padding-bottom: 20px;
       }
 
+      /* === RESPONSIVE CHO ĐIỆN THOẠI === */
       @media (max-width: 768px) {
         h1.title {
           font-size: 2.5rem;
+        } /* Chữ tiêu đề nhỏ lại */
+        .subtitle {
+          font-size: 0.95rem;
+          padding: 0 10px;
         }
+
         .gallery {
-          gap: 10px;
+          gap: 15px;
+          margin: 20px 0;
         }
+
+        /* Ảnh trên mobile sẽ nhỏ hơn để vừa 2 ảnh 1 hàng hoặc xếp dọc đẹp hơn */
         .photo-card {
-          width: 160px;
-          height: 220px;
+          width: 45%; /* Chiếm 45% màn hình mỗi ảnh */
+          height: auto; /* Chiều cao tự động theo tỷ lệ ảnh */
+          aspect-ratio: 3/4; /* Giữ tỷ lệ khung hình */
+          max-width: 160px; /* Không to quá */
         }
+
         .letter-box {
-          padding: 25px;
+          padding: 20px;
+          margin-bottom: 100px;
         }
         #wish-text {
+          font-size: 1.05rem;
+          line-height: 1.6;
+        }
+
+        /* Nút bấm to hơn chút để dễ ấn */
+        .pulse-btn {
+          padding: 15px 30px;
           font-size: 1.1rem;
         }
       }
@@ -238,14 +250,17 @@
       <h2
         style="
           font-family: &quot;Dancing Script&quot;;
-          font-size: 2.2rem;
+          font-size: 2rem;
           color: #a18cd1;
-          margin-bottom: 20px;
+          margin-bottom: 10px;
         "
       >
         Một món quà nhỏ dành cho Yến 🌸
       </h2>
-      <button class="pulse-btn" id="openBtn">🎁 Mở thư & Nghe nhạc 🎶</button>
+      <p style="font-size: 0.9rem; color: #888; margin-bottom: 20px">
+        (Hãy bật âm lượng lên nhé 🔊)
+      </p>
+      <button class="pulse-btn" id="openBtn">🎁 Mở thư & Nghe nhạc</button>
     </div>
 
     <audio id="bgMusic" loop>
@@ -257,7 +272,7 @@
     <div id="main-content">
       <header>
         <h1 class="title">Happy Birthday<br />Dương Ngọc Yến</h1>
-        <p style="color: #666; font-size: 1.1rem; font-weight: 600">
+        <p class="subtitle">
           ✨ Ngày 11 tháng 02 - Ngày của nụ cười và nắng ấm ☀️
         </p>
       </header>
@@ -297,13 +312,13 @@
             startTypewriter();
           }, 100);
         }, 1000);
+
         music.volume = 0.7;
         music.play().catch((error) => {
           console.log("Lỗi phát nhạc: ", error);
         });
       });
 
-      // === CẬP NHẬT LỜI CHÚC VỚI NHIỀU ICON ===
       const fullWish = `Chào Dương Ngọc Yến, cô gái tuyệt vời của tháng Hai! 🌸✨
 
 Hôm nay là một ngày thật sự đặc biệt! 🥳 Thế giới này đã may mắn biết bao khi có thêm nụ cười rạng rỡ của em vào ngày 11/02. ☀️
@@ -327,8 +342,11 @@ Happy Birthday to You! Mong mọi điều tốt đẹp nhất sẽ đến bên e
         if (i < fullWish.length) {
           textContainer.innerHTML += fullWish.charAt(i);
           i++;
-          if (i % 50 === 0) {
-            window.scrollTo(0, document.body.scrollHeight);
+          // Tự động cuộn xuống khi chữ chạy
+          const mainContent = document.getElementById("main-content");
+          if (i % 5 === 0) {
+            // Cứ 5 ký tự thì cuộn 1 lần cho mượt
+            mainContent.scrollTop = mainContent.scrollHeight;
           }
           setTimeout(startTypewriter, 40);
         } else {
@@ -336,11 +354,18 @@ Happy Birthday to You! Mong mọi điều tốt đẹp nhất sẽ đến bên e
         }
       }
 
-      // === Hiệu ứng Confetti (Giữ nguyên) ===
+      // === Hiệu ứng Confetti ===
       const canvas = document.getElementById("confetti");
       const ctx = canvas.getContext("2d");
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+
+      // Hàm set kích thước canvas chuẩn cho mobile
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      resizeCanvas();
+      window.addEventListener("resize", resizeCanvas);
+
       let particles = [];
       const colors = [
         "#ff9a9e",
@@ -350,11 +375,12 @@ Happy Birthday to You! Mong mọi điều tốt đẹp nhất sẽ đến bên e
         "#ffffff",
         "#FFD700",
       ];
+
       class Particle {
         constructor() {
           this.x = Math.random() * canvas.width;
           this.y = Math.random() * canvas.height - canvas.height;
-          this.size = Math.random() * 15 + 5;
+          this.size = Math.random() * 12 + 4; // Kích thước hạt nhỏ hơn chút cho mobile
           this.color = colors[Math.floor(Math.random() * colors.length)];
           this.speedY = Math.random() * 2 + 1;
           this.speedX = Math.random() * 2 - 1;
@@ -381,8 +407,11 @@ Happy Birthday to You! Mong mọi điều tốt đẹp nhất sẽ đến bên e
           ctx.restore();
         }
       }
+
+      // Giảm số lượng hạt trên mobile để đỡ lag
+      const particleCount = window.innerWidth < 768 ? 40 : 70;
       function initConfetti() {
-        for (let j = 0; j < 70; j++) particles.push(new Particle());
+        for (let j = 0; j < particleCount; j++) particles.push(new Particle());
       }
       function animateConfetti() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -392,12 +421,9 @@ Happy Birthday to You! Mong mọi điều tốt đẹp nhất sẽ đến bên e
         });
         requestAnimationFrame(animateConfetti);
       }
+
       initConfetti();
       animateConfetti();
-      window.addEventListener("resize", () => {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-      });
     </script>
   </body>
 </html>
