@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gửi Dương Ngọc Yến - 11/02</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --primary: #ff9a9e;
+        --secondary: #fad0c4;
+        --accent: #a18cd1;
+        --text: #2d3436;
+        --bright-gradient: linear-gradient(
+          to right,
+          #ff5f6d,
+          #ffc371,
+          #a18cd1
+        ); /* Màu mới rực rỡ */
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Quicksand", sans-serif;
+        background: linear-gradient(135deg, #fff1eb 0%, #ace0f9 100%);
+        min-height: 100vh;
+        overflow: hidden;
+      }
+
+      /* --- MÀN HÌNH CHỜ (Overlay) --- */
+      #overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.9) 0%,
+          rgba(255, 230, 230, 1) 100%
+        );
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: opacity 1s ease;
+      }
+
+      .pulse-btn {
+        padding: 20px 50px;
+        font-size: 1.5rem;
+        background: linear-gradient(45deg, var(--primary), var(--accent));
+        color: white;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        box-shadow: 0 10px 30px rgba(255, 100, 100, 0.4);
+        animation: pulse 2s infinite;
+        font-family: "Dancing Script", cursive;
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+          box-shadow: 0 0 0 0 rgba(255, 154, 158, 0.7);
+        }
+        70% {
+          transform: scale(1.05);
+          box-shadow: 0 0 0 20px rgba(255, 154, 158, 0);
+        }
+        100% {
+          transform: scale(1);
+          box-shadow: 0 0 0 0 rgba(255, 154, 158, 0);
+        }
+      }
+
+      /* --- NỘI DUNG CHÍNH --- */
+      #main-content {
+        display: none;
+        opacity: 0;
+        padding: 40px 20px;
+        max-width: 900px;
+        margin: 0 auto;
+        text-align: center;
+        transition: opacity 1.5s ease;
+        height: 100vh;
+        overflow-y: auto;
+      }
+
+      h1.title {
+        font-family: "Dancing Script", cursive;
+        font-size: 3.5rem;
+        background: var(--bright-gradient); /* Dùng màu rực rỡ cho tiêu đề */
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 20px;
+        animation: floatText 3s ease-in-out infinite;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      @keyframes floatText {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      .gallery {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        margin: 40px 0;
+        flex-wrap: wrap;
+      }
+      .photo-card {
+        width: 220px;
+        height: 300px;
+        background: white;
+        padding: 10px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        transform: rotate(-5deg);
+        transition: transform 0.5s;
+        border-radius: 4px;
+      }
+      .photo-card:nth-child(2) {
+        transform: rotate(5deg);
+      }
+      .photo-card:hover {
+        transform: rotate(0) scale(1.1);
+        z-index: 10;
+      }
+      .photo-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 2px;
+      }
+
+      /* Khung lời chúc */
+      .letter-box {
+        background: rgba(
+          255,
+          255,
+          255,
+          0.85
+        ); /* Nền trắng đục hơn một chút để làm nổi chữ */
+        backdrop-filter: blur(10px);
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 15px 40px rgba(255, 154, 158, 0.15);
+        text-align: left;
+        margin-bottom: 50px;
+        border: 2px solid white;
+        position: relative;
+      }
+
+      /* === CẬP NHẬT CSS CHO PHẦN CHỮ RỰC RỠ HƠN === */
+      #wish-text {
+        font-size: 1.25rem; /* Chữ to hơn một chút */
+        line-height: 1.9;
+        white-space: pre-line;
+        font-weight: 600; /* Chữ đậm hơn để rõ màu */
+
+        /* Tạo hiệu ứng màu gradient cho chữ */
+        background: linear-gradient(to right, #ff5f6d, #a18cd1, #ff7eb3);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+
+        /* Thêm bóng nhẹ để dễ đọc trên nền sáng */
+        filter: drop-shadow(1px 1px 1px rgba(255, 255, 255, 0.5));
+      }
+
+      .cursor {
+        display: inline-block;
+        width: 3px;
+        height: 1.2em;
+        background: var(--accent);
+        animation: blink 1s infinite;
+        vertical-align: text-bottom;
+      }
+      @keyframes blink {
+        50% {
+          opacity: 0;
+        }
+      }
+
+      #confetti {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: -1;
+      }
+      footer {
+        margin-top: 30px;
+        font-size: 0.9rem;
+        color: #888;
+        padding-bottom: 20px;
+      }
+
+      @media (max-width: 768px) {
+        h1.title {
+          font-size: 2.5rem;
+        }
+        .gallery {
+          gap: 10px;
+        }
+        .photo-card {
+          width: 160px;
+          height: 220px;
+        }
+        .letter-box {
+          padding: 25px;
+        }
+        #wish-text {
+          font-size: 1.1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="overlay">
+      <h2
+        style="
+          font-family: &quot;Dancing Script&quot;;
+          font-size: 2.2rem;
+          color: #a18cd1;
+          margin-bottom: 20px;
+        "
+      >
+        Một món quà nhỏ dành cho Yến 🌸
+      </h2>
+      <button class="pulse-btn" id="openBtn">🎁 Mở thư & Nghe nhạc 🎶</button>
+    </div>
+
+    <audio id="bgMusic" loop>
+      <source src="sinhnhat.mp3" type="audio/mpeg" />
+    </audio>
+
+    <canvas id="confetti"></canvas>
+
+    <div id="main-content">
+      <header>
+        <h1 class="title">Happy Birthday<br />Dương Ngọc Yến</h1>
+        <p style="color: #666; font-size: 1.1rem; font-weight: 600">
+          ✨ Ngày 11 tháng 02 - Ngày của nụ cười và nắng ấm ☀️
+        </p>
+      </header>
+
+      <div class="gallery">
+        <div class="photo-card">
+          <img src="1.jpg" alt="Ngọc Yến 1" />
+        </div>
+        <div class="photo-card">
+          <img src="2.jpg" alt="Ngọc Yến 2" />
+        </div>
+      </div>
+
+      <div class="letter-box">
+        <div id="wish-text"></div>
+        <span class="cursor"></span>
+      </div>
+
+      <footer>
+        <p>Made with ❤️ just for Yến</p>
+      </footer>
+    </div>
+
+    <script>
+      const openBtn = document.getElementById("openBtn");
+      const overlay = document.getElementById("overlay");
+      const mainContent = document.getElementById("main-content");
+      const music = document.getElementById("bgMusic");
+
+      openBtn.addEventListener("click", () => {
+        overlay.style.opacity = "0";
+        setTimeout(() => {
+          overlay.style.display = "none";
+          mainContent.style.display = "block";
+          setTimeout(() => {
+            mainContent.style.opacity = "1";
+            startTypewriter();
+          }, 100);
+        }, 1000);
+        music.volume = 0.7;
+        music.play().catch((error) => {
+          console.log("Lỗi phát nhạc: ", error);
+        });
+      });
+
+      // === CẬP NHẬT LỜI CHÚC VỚI NHIỀU ICON ===
+      const fullWish = `Chào Dương Ngọc Yến, cô gái tuyệt vời của tháng Hai! 🌸✨
+
+Hôm nay là một ngày thật sự đặc biệt! 🥳 Thế giới này đã may mắn biết bao khi có thêm nụ cười rạng rỡ của em vào ngày 11/02. ☀️
+
+Người ta nói, những cô gái sinh vào tháng này mang sự tinh tế của mùa đông ❄️ và sự ấm áp dịu dàng của mùa xuân sắp tới 🌷. Anh tin Yến chính là minh chứng rõ nhất cho điều đó.
+
+Tuổi mới, Anh chúc Yến:
+💪 Có một "bản lĩnh" kiên cường để vượt qua mọi thử thách.
+❤️ Có một "trái tim" đủ ấm nóng để yêu thương và được yêu thương.
+🌿 Và một "tâm hồn" luôn an nhiên tự tại giữa bộn bề cuộc sống.
+
+Hãy cứ sống như một đóa hoa, rực rỡ theo cách riêng của chính mình, Yến nhé! 🌺💃
+
+Happy Birthday to You! Mong mọi điều tốt đẹp nhất sẽ đến bên em. 🎂🎁🥂💕`;
+
+      const textContainer = document.getElementById("wish-text");
+      const cursor = document.querySelector(".cursor");
+      let i = 0;
+
+      function startTypewriter() {
+        if (i < fullWish.length) {
+          textContainer.innerHTML += fullWish.charAt(i);
+          i++;
+          if (i % 50 === 0) {
+            window.scrollTo(0, document.body.scrollHeight);
+          }
+          setTimeout(startTypewriter, 40);
+        } else {
+          cursor.style.display = "none";
+        }
+      }
+
+      // === Hiệu ứng Confetti (Giữ nguyên) ===
+      const canvas = document.getElementById("confetti");
+      const ctx = canvas.getContext("2d");
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      let particles = [];
+      const colors = [
+        "#ff9a9e",
+        "#fad0c4",
+        "#a18cd1",
+        "#ffb199",
+        "#ffffff",
+        "#FFD700",
+      ];
+      class Particle {
+        constructor() {
+          this.x = Math.random() * canvas.width;
+          this.y = Math.random() * canvas.height - canvas.height;
+          this.size = Math.random() * 15 + 5;
+          this.color = colors[Math.floor(Math.random() * colors.length)];
+          this.speedY = Math.random() * 2 + 1;
+          this.speedX = Math.random() * 2 - 1;
+          this.angle = Math.random() * 360;
+          this.spin = Math.random() < 0.5 ? 1 : -1;
+        }
+        update() {
+          this.y += this.speedY;
+          this.x += this.speedX;
+          this.angle += this.spin;
+          if (this.y > canvas.height) {
+            this.y = -this.size;
+            this.x = Math.random() * canvas.width;
+          }
+        }
+        draw() {
+          ctx.save();
+          ctx.translate(this.x, this.y);
+          ctx.rotate((this.angle * Math.PI) / 180);
+          ctx.fillStyle = this.color;
+          ctx.beginPath();
+          ctx.arc(0, 0, this.size / 2, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.restore();
+        }
+      }
+      function initConfetti() {
+        for (let j = 0; j < 70; j++) particles.push(new Particle());
+      }
+      function animateConfetti() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach((p) => {
+          p.update();
+          p.draw();
+        });
+        requestAnimationFrame(animateConfetti);
+      }
+      initConfetti();
+      animateConfetti();
+      window.addEventListener("resize", () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      });
+    </script>
+  </body>
+</html>
